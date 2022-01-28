@@ -5,10 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 const config = {
-  initialColorMode: 'dark',
+  initialColorMode: "dark",
   useSystemColorMode: false,
-}
-const theme = extendTheme({ config })
+};
+const theme = extendTheme({ config });
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>

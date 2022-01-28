@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 import Card from "./Card.jsx";
-import { Center } from '@chakra-ui/react';
+import { Center } from "@chakra-ui/react";
 
 const GalleryContainer = ({ isLoading, page, cardData }) => {
-
   const flexGrid = {
     display: "flex",
     flexWrap: "wrap",
@@ -14,12 +12,17 @@ const GalleryContainer = ({ isLoading, page, cardData }) => {
     maxWidth: 1280,
   };
 
-
   return (
     <Center>
       <div id="gallery-grid" style={flexGrid}>
         {cardData.map((el, idx) => (
-          <Card key={idx} idx={idx} cardInfo={el} page={page} isLoading={isLoading} />
+          <Card
+            key={idx}
+            idx={idx}
+            cardInfo={el}
+            page={page}
+            isLoading={isLoading}
+          />
         ))}
       </div>
     </Center>

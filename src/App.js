@@ -25,7 +25,7 @@ function App() {
       .get("https://picsum.photos/v2/list?", {
         params: {
           page: `${page}`,
-          limit: 10,
+          limit: 9,
         },
       })
       .then((data) => {
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <Heading mt={45} mb={35}>
+      <Heading as="h1" size="xl" mt={45} mb={35}>
         Endpoint Gallery
       </Heading>
       <GalleryContainer
