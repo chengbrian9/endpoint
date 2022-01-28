@@ -1,5 +1,5 @@
 import React from "react";
-import { configure, shallow, mount } from "enzyme";
+import { configure, shallow } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import GalleryContainer from "../src/components/GalleryContainer";
 import Card from "../src/components/Card";
@@ -10,6 +10,7 @@ describe("Gallery Container", () => {
   let wrapper;
   const cardData = [{}, {}];
   wrapper = shallow(<GalleryContainer cardData={cardData} />);
+  
   it("renders a grid", () => {
     expect(wrapper.find("#gallery-grid")).toHaveLength(1);
   });

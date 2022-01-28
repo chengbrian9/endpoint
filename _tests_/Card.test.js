@@ -1,5 +1,5 @@
 import React from "react";
-import { configure, shallow, mount } from "enzyme";
+import { configure, shallow } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Card from "../src/components/Card";
 import { Box, Image, Spinner, Text } from "@chakra-ui/react";
