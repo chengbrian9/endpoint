@@ -1,22 +1,27 @@
 import React from "react";
-import { Image, Box, Text } from "@chakra-ui/react";
+import { Image, Box, Text, Spinner } from "@chakra-ui/react";
 
-const Card = ({ cardInfo }) => {
+const Card = ({ cardInfo, isLoading }) => {
   return (
     <Box
       maxW="xs"
+      minW="xs"
       borderRadius="lg"
       overflow="hidden"
       backgroundColor="#009FB4"
     >
-      <Image
-        objectFit="cover"
-        maxH="200"
-        minH="200"
-        w="100%"
-        src={cardInfo.download_url}
-        alt="card-img"
-      />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Image
+          objectFit="cover"
+          maxH="200"
+          minH="200"
+          w="100%"
+          src={cardInfo.download_url}
+          alt="card-img"
+        />
+      )}
 
       <Box p="6">
         <Box

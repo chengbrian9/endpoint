@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 import { Center } from '@chakra-ui/react';
 
-const GalleryContainer = ({ page, cardData }) => {
+const GalleryContainer = ({ isLoading, page, cardData }) => {
 
   const flexGrid = {
     display: "flex",
@@ -19,7 +19,7 @@ const GalleryContainer = ({ page, cardData }) => {
     <Center>
       <div id="gallery-grid" style={flexGrid}>
         {cardData.map((el, idx) => (
-          <Card key={idx} idx={idx} cardInfo={el} page={page} />
+          <Card key={idx} idx={idx} cardInfo={el} page={page} isLoading={isLoading} />
         ))}
       </div>
     </Center>

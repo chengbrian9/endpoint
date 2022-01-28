@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import GalleryContainer from "./components/GalleryContainer";
 import React, { useState, useEffect } from "react";
-import { Button, Center, Heading } from '@chakra-ui/react'
+import { Button, Center, Heading } from "@chakra-ui/react";
 import axios from "axios";
 
 function App() {
@@ -12,14 +12,14 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   function handleNext() {
-    setIsLoading(!isLoading)
-    setPage(page + 1)
+    setIsLoading(true);
+    setPage(page + 1);
   }
   function handlePrev() {
-    setIsLoading(!isLoading)
-    setPage(page - 1)
+    setIsLoading(true);
+    setPage(page - 1);
   }
-  
+
   useEffect(() => {
     axios
       .get("https://picsum.photos/v2/list?", {
@@ -29,12 +29,12 @@ function App() {
         },
       })
       .then((data) => {
-        // console.log(data.data)
         setCardData(data.data);
-        setIsLoading(false);
       })
+      .then(() => setIsLoading(false))
       .catch((err) => {
         setIsError(true);
+        setIsLoading(false);
         alert(err);
       });
   }, [page]);
@@ -49,11 +49,43 @@ function App() {
 
   return (
     <div className="App">
-      <Heading> Endpoint Gallery</Heading>
-      <GalleryContainer cardData={cardData} isLoading={isLoading} isError={isError} page={page} />
+      <Heading mt={45} mb={35}>
+        Endpoint Gallery
+      </Heading>
+      <GalleryContainer
+        cardData={cardData}
+        isLoading={isLoading}
+        isError={isError}
+        page={page}
+      />
       <Center>
-        <Button mr={2.5} background='#009fb4' color='white' onClick={() => handlePrev()} disabled={page < 2}> Previous </Button>
-        <Button ml={2.5} background='#009fb4' color='white' onClick={() => handleNext()}> Next </Button>
+        {isLoading ? (
+          <Button ml={2.5} background="#009fb4" isLoading></Button>
+        ) : (
+          <Button
+            mr={2.5}
+            background="#009fb4"
+            color="white"
+            onClick={() => handlePrev()}
+            disabled={page < 2}
+            _hover={{ bg: "#009fb4" }}
+          >
+            Previous
+          </Button>
+        )}
+        {isLoading ? (
+          <Button ml={2.5} background="#009fb4" isLoading></Button>
+        ) : (
+          <Button
+            ml={2.5}
+            background="#009fb4"
+            color="white"
+            onClick={() => handleNext()}
+            _hover={{ bg: "#009fb4" }}
+          >
+            Next
+          </Button>
+        )}
       </Center>
     </div>
   );
