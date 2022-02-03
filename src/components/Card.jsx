@@ -1,6 +1,24 @@
 import React from "react";
 import { Image, Box, Text, Spinner } from "@chakra-ui/react";
 
+const Label = ({title, data, fontSize }) => {
+  return (
+    <Box display="flex" alignItems="baseline" mt="0.5rem">
+          <Box
+            display="flex"
+            fontWeight="medium"
+            letterSpacing="wide"
+            fontSize="xs"
+            minW="4rem"
+            alignItems="flex-start"
+          >
+            {title}
+          </Box>
+          <Text ml="2rem" fontSize={fontSize} isTruncated>{data}</Text>
+        </Box>
+  )
+}
+
 const Card = ({ cardInfo, isLoading }) => {
   return (
     <Box
@@ -44,48 +62,19 @@ const Card = ({ cardInfo, isLoading }) => {
         </Box>
 
         <hr />
-
-        <Box display="flex" alignItems="baseline" mt="0.5rem">
-          <Box
-            display="flex"
-            fontWeight="medium"
-            letterSpacing="wide"
-            fontSize="xs"
-            minW="4rem"
-            alignItems="flex-start"
-          >
-            Author
-          </Box>
-          <Text ml="2rem">{cardInfo ? cardInfo.author : "Lorum Ipsom"}</Text>
-        </Box>
-        <Box display="flex" alignItems="baseline" mt="0.5rem">
-          <Box
-            display="flex"
-            fontWeight="medium"
-            letterSpacing="wide"
-            fontSize="xs"
-            minW="4rem"
-            alignItems="flex-start"
-          >
-            ID
-          </Box>
-          <Text ml="2rem">{cardInfo ? cardInfo.id : "Lorum Ipsom"}</Text>
-        </Box>
-        <Box display="flex" alignItems="baseline" mt="0.5rem">
-          <Box
-            display="flex"
-            fontWeight="medium"
-            letterSpacing="wide"
-            fontSize="xs"
-            minW="4rem"
-            alignItems="flex-start"
-          >
-            URL
-          </Box>
-          <Text ml="2rem" fontSize="0.75rem" isTruncated>
-            {cardInfo ? cardInfo.url : "Lorum Ipsom"}
-          </Text>
-        </Box>
+        <Label 
+          title={'Author'}
+          data={cardInfo ? cardInfo.author : "Lorum Ipsom"}
+          />  
+        <Label 
+          title={'ID'}
+          data={cardInfo ? cardInfo.id : "Lorum Ipsom"}
+          />    
+        <Label 
+          title={'URL'}
+          data={cardInfo ? cardInfo.url : "Lorum Ipsom"}
+          fontSize={'0.75rem'}
+          />  
       </Box>
     </Box>
   );
